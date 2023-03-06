@@ -20,6 +20,7 @@
 
 package de.robv.android.xposed;
 
+import java.util.HashMap;
 import android.app.ActivityThread;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
@@ -82,7 +83,7 @@ public final class XposedBridge {
     private static final String castException = "Return value's type from hook callback does not match the hooked method";
 
     private static final Method getCause;
-    public static Map<String,ClassLoader> moduleClassloaders = new HashMap<String,ClassLoader>();
+    public static HashMap<String,ClassLoader> moduleClassloaders = new HashMap<String,ClassLoader>();
 
     static {
         Method tmp;
