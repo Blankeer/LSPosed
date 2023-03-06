@@ -1527,7 +1527,7 @@ public final class XposedHelpers {
      * @throws InvocationTargetError In case an exception was thrown by the invoked method.
      */
     public static Object callStaticMethod(Class<?> clazz, String methodName, Object... args) {
-        Log.d(TAG, "callStaticMethod "+obj+":"+methodName+" "+args);
+        Log.d(TAG, "callStaticMethod "+clazz+":"+methodName+" "+args);
 
         try {
             return findMethodBestMatch(clazz, methodName, args).invoke(null, args);
@@ -1550,7 +1550,7 @@ public final class XposedHelpers {
      * methods with the same name, especially if you call it with {@code null} parameters.
      */
     public static Object callStaticMethod(Class<?> clazz, String methodName, Class<?>[] parameterTypes, Object... args) {
-        Log.d(TAG, "callStaticMethod "+obj+":"+methodName+" "+parameterTypes+args);
+        Log.d(TAG, "callStaticMethod "+clazz+":"+methodName+" "+parameterTypes+args);
 
         try {
             return findMethodBestMatch(clazz, methodName, parameterTypes, args).invoke(null, args);
