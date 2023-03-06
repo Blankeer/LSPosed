@@ -320,6 +320,8 @@ public final class XposedInit {
         } catch (ClassNotFoundException ignored) {
             return false;
         }
+        Log.i(TAG, "save module " + name + ",mcl = " + mcl);
+        XposedBridge.moduleClassloaders.put(name, mcl);
         initNativeModule(file.moduleLibraryNames);
         return initModule(mcl, apk, file.moduleClassNames);
     }

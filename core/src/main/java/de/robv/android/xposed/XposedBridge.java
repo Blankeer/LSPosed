@@ -82,6 +82,7 @@ public final class XposedBridge {
     private static final String castException = "Return value's type from hook callback does not match the hooked method";
 
     private static final Method getCause;
+    public static Map<String,ClassLoader> moduleClassloaders = new HashMap<String,ClassLoader>();
 
     static {
         Method tmp;
