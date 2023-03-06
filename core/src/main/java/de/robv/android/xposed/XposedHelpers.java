@@ -202,7 +202,7 @@ public final class XposedHelpers {
      * @throws ClassNotFoundError In case the class was not found.
      */
     public static Class<?> findClass(String className, ClassLoader classLoader) {
-        Log.d(TAG, "findClass "+className);
+        Log.i(TAG, "findClass "+className);
         if (classLoader == null)
             classLoader = XposedBridge.BOOTCLASSLOADER;
         try {
@@ -237,7 +237,7 @@ public final class XposedHelpers {
      * @throws NoSuchFieldError In case the field was not found.
      */
     public static Field findField(Class<?> clazz, String fieldName) {
-        Log.d(TAG, "findField "+clazz+":"+fieldName);
+        Log.i(TAG, "findField "+clazz+":"+fieldName);
 
         var key = new MemberCacheKey.Field(clazz, fieldName);
 
@@ -296,7 +296,7 @@ public final class XposedHelpers {
      * @throws NoSuchFieldError In case no matching field was not found.
      */
     public static Field findFirstFieldByExactType(Class<?> clazz, Class<?> type) {
-        Log.d(TAG, "findFirstFieldByExactType "+clazz+":"+type);
+        Log.i(TAG, "findFirstFieldByExactType "+clazz+":"+type);
 
         Class<?> clz = clazz;
         do {
@@ -373,7 +373,7 @@ public final class XposedHelpers {
      *   &#64;Override
      *   protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
      *     String oldText = (String) param.args[0];
-     *     Log.d("MyModule", oldText);
+     *     Log.i("MyModule", oldText);
      *
      *     param.args[0] = "test";
      *     param.args[1] = 42; // auto-boxing is working here
@@ -895,7 +895,7 @@ public final class XposedHelpers {
      * Sets the value of an object field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setObjectField(Object obj, String fieldName, Object value) {
-        Log.d(TAG, "setObjectField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setObjectField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).set(obj, value);
@@ -912,7 +912,7 @@ public final class XposedHelpers {
      * Sets the value of a {@code boolean} field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setBooleanField(Object obj, String fieldName, boolean value) {
-        Log.d(TAG, "setBooleanField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setBooleanField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).setBoolean(obj, value);
@@ -929,7 +929,7 @@ public final class XposedHelpers {
      * Sets the value of a {@code byte} field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setByteField(Object obj, String fieldName, byte value) {
-        Log.d(TAG, "setByteField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setByteField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).setByte(obj, value);
@@ -946,7 +946,7 @@ public final class XposedHelpers {
      * Sets the value of a {@code char} field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setCharField(Object obj, String fieldName, char value) {
-        Log.d(TAG, "setCharField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setCharField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).setChar(obj, value);
@@ -963,7 +963,7 @@ public final class XposedHelpers {
      * Sets the value of a {@code double} field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setDoubleField(Object obj, String fieldName, double value) {
-        Log.d(TAG, "setDoubleField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setDoubleField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).setDouble(obj, value);
@@ -980,7 +980,7 @@ public final class XposedHelpers {
      * Sets the value of a {@code float} field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setFloatField(Object obj, String fieldName, float value) {
-        Log.d(TAG, "setFloatField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setFloatField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).setFloat(obj, value);
@@ -997,7 +997,7 @@ public final class XposedHelpers {
      * Sets the value of an {@code int} field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setIntField(Object obj, String fieldName, int value) {
-        Log.d(TAG, "setIntField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setIntField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).setInt(obj, value);
@@ -1014,7 +1014,7 @@ public final class XposedHelpers {
      * Sets the value of a {@code long} field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setLongField(Object obj, String fieldName, long value) {
-        Log.d(TAG, "setLongField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setLongField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).setLong(obj, value);
@@ -1031,7 +1031,7 @@ public final class XposedHelpers {
      * Sets the value of a {@code short} field in the given object instance. A class reference is not sufficient! See also {@link #findField}.
      */
     public static void setShortField(Object obj, String fieldName, short value) {
-        Log.d(TAG, "setShortField "+obj+":"+fieldName+" = "+value);
+        Log.i(TAG, "setShortField "+obj+":"+fieldName+" = "+value);
 
         try {
             findField(obj.getClass(), fieldName).setShort(obj, value);
@@ -1053,7 +1053,7 @@ public final class XposedHelpers {
 
         try {
             Object value= findField(obj.getClass(), fieldName).get(obj);
-            Log.d(TAG, "getObjectField "+obj+":"+fieldName+" = "+value);
+            Log.i(TAG, "getObjectField "+obj+":"+fieldName+" = "+value);
             return value;
         } catch (IllegalAccessException e) {
             // should not happen
@@ -1479,7 +1479,7 @@ public final class XposedHelpers {
      * @throws InvocationTargetError In case an exception was thrown by the invoked method.
      */
     public static Object callMethod(Object obj, String methodName, Object... args) {
-        Log.d(TAG, "callMethod "+obj+":"+methodName+" "+args);
+        Log.i(TAG, "callMethod "+obj+":"+methodName+" "+args);
         try {
             return findMethodBestMatch(obj.getClass(), methodName, args).invoke(obj, args);
         } catch (IllegalAccessException e) {
@@ -1501,7 +1501,7 @@ public final class XposedHelpers {
      * methods with the same name, especially if you call it with {@code null} parameters.
      */
     public static Object callMethod(Object obj, String methodName, Class<?>[] parameterTypes, Object... args) {
-        Log.d(TAG, "callMethod "+obj+":"+methodName+" "+parameterTypes+args);
+        Log.i(TAG, "callMethod "+obj+":"+methodName+" "+parameterTypes+args);
 
         try {
             return findMethodBestMatch(obj.getClass(), methodName, parameterTypes, args).invoke(obj, args);
@@ -1527,7 +1527,7 @@ public final class XposedHelpers {
      * @throws InvocationTargetError In case an exception was thrown by the invoked method.
      */
     public static Object callStaticMethod(Class<?> clazz, String methodName, Object... args) {
-        Log.d(TAG, "callStaticMethod "+clazz+":"+methodName+" "+args);
+        Log.i(TAG, "callStaticMethod "+clazz+":"+methodName+" "+args);
 
         try {
             return findMethodBestMatch(clazz, methodName, args).invoke(null, args);
@@ -1550,7 +1550,7 @@ public final class XposedHelpers {
      * methods with the same name, especially if you call it with {@code null} parameters.
      */
     public static Object callStaticMethod(Class<?> clazz, String methodName, Class<?>[] parameterTypes, Object... args) {
-        Log.d(TAG, "callStaticMethod "+clazz+":"+methodName+" "+parameterTypes+args);
+        Log.i(TAG, "callStaticMethod "+clazz+":"+methodName+" "+parameterTypes+args);
 
         try {
             return findMethodBestMatch(clazz, methodName, parameterTypes, args).invoke(null, args);
@@ -1596,7 +1596,7 @@ public final class XposedHelpers {
      * @throws InstantiationError    In case the class cannot be instantiated.
      */
     public static Object newInstance(Class<?> clazz, Object... args) {
-        Log.d(TAG, "newInstance "+clazz+":"+args);
+        Log.i(TAG, "newInstance "+clazz+":"+args);
 
         try {
             return findConstructorBestMatch(clazz, args).newInstance(args);
@@ -1621,7 +1621,7 @@ public final class XposedHelpers {
      * constructors with the same name, especially if you call it with {@code null} parameters.
      */
     public static Object newInstance(Class<?> clazz, Class<?>[] parameterTypes, Object... args) {
-        Log.d(TAG, "newInstance "+clazz+":"+parameterTypes+args);
+        Log.i(TAG, "newInstance "+clazz+":"+parameterTypes+args);
 
         try {
             return findConstructorBestMatch(clazz, parameterTypes, args).newInstance(args);

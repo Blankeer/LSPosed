@@ -207,7 +207,7 @@ public final class XposedBridge {
      * @see #hookAllConstructors
      */
     public static XC_MethodHook.Unhook hookMethod(Member hookMethod, XC_MethodHook callback) {
-        Log.d(TAG, "hookMethod "+hookMethod);
+        Log.i(TAG, "hookMethod "+hookMethod);
 
         if (!(hookMethod instanceof Executable)) {
             throw new IllegalArgumentException("Only methods and constructors can be hooked: " + hookMethod);
@@ -241,7 +241,7 @@ public final class XposedBridge {
      */
     @Deprecated
     public static void unhookMethod(Member hookMethod, XC_MethodHook callback) {
-        Log.d(TAG, "unhookMethod "+hookMethod);
+        Log.i(TAG, "unhookMethod "+hookMethod);
         if (hookMethod instanceof Executable) {
             HookBridge.unhookMethod((Executable) hookMethod, callback);
         }
