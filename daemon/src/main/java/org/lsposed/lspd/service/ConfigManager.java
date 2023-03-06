@@ -625,7 +625,7 @@ public class ConfigManager {
         }
         cachedScope.clear();
         try (Cursor cursor = db.query("scope INNER JOIN modules ON scope.mid = modules.mid", new String[]{"app_pkg_name", "module_pkg_name", "user_id"},
-                "enabled = 1", null, null, null, null)) {
+                "enabled = 1", null, null, null, "module_pkg_name asc")) {
             int appPkgNameIdx = cursor.getColumnIndex("app_pkg_name");
             int modulePkgNameIdx = cursor.getColumnIndex("module_pkg_name");
             int userIdIdx = cursor.getColumnIndex("user_id");
