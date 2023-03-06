@@ -19,6 +19,7 @@
  */
 
 package de.robv.android.xposed;
+import android.util.Log;
 
 import android.content.res.AssetManager;
 import android.content.res.Resources;
